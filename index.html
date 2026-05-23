@@ -264,7 +264,7 @@
       transform:translateY(-4px);
 
       box-shadow:
-      0 0 25px rgba(0,255,255,.5);
+      0 0 25px rgba(255,0,60,.6);
     }
 
     .section-title{
@@ -296,7 +296,7 @@
       transform:translateY(-8px);
 
       box-shadow:
-      0 0 20px rgba(0,255,255,.18);
+      0 0 20px rgba(255,0,60,.35);
     }
 
     .card h3{
@@ -326,7 +326,7 @@
       transform:scale(1.05);
 
       box-shadow:
-      0 0 12px rgba(0,255,255,.4);
+      0 0 12px rgba(255,0,60,.6);
     }
 
     /* REFERENCES */
@@ -338,6 +338,12 @@
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
       backdrop-filter:blur(12px);
+      transition:.3s;
+    }
+
+    .reference:hover{
+      box-shadow:
+      0 0 20px rgba(255,0,60,.35);
     }
 
     .reference h3{
@@ -368,7 +374,7 @@
       transform:translateY(-8px);
 
       box-shadow:
-      0 0 18px rgba(0,255,255,.25);
+      0 0 18px rgba(255,0,60,.4);
     }
 
     .contact-card a{
@@ -379,7 +385,7 @@
     }
 
     .contact-card a:hover{
-      color:#ff00ff;
+      color:#ff003c;
     }
 
     footer{
@@ -389,7 +395,7 @@
       color:#888;
     }
 
-    /* OPTIMIZED CURSOR */
+    /* CUSTOM CURSOR */
 
     .cursor{
       width:16px;
@@ -405,6 +411,10 @@
       0 0 20px #00ffff;
 
       transform:translate(-50%,-50%);
+      transition:
+      background .2s ease,
+      box-shadow .2s ease,
+      transform .2s ease;
     }
 
     .cursor-trail{
@@ -483,13 +493,9 @@
     <div class="buttons">
 
       <a href="#experience" class="btn">Deneyimler</a>
-
       <a href="#skills" class="btn">Yetenekler</a>
-
       <a href="#about" class="btn">Hakkımda</a>
-
       <a href="#references" class="btn">Referanslar</a>
-
       <a href="#contact" class="btn">İletişim</a>
 
     </div>
@@ -507,7 +513,6 @@
     <div class="cards">
 
       <div class="card">
-
         <h3>Kartek Metalürji</h3>
 
         <p>
@@ -517,11 +522,9 @@
         <p>
           Aralık 2024 - Mayıs 2025
         </p>
-
       </div>
 
       <div class="card">
-
         <h3>Aselsan Miba Elektronik</h3>
 
         <p>
@@ -535,11 +538,9 @@
         <p>
           2019 - 2020
         </p>
-
       </div>
 
       <div class="card">
-
         <h3>Özler Plastik</h3>
 
         <p>
@@ -553,7 +554,6 @@
         <p>
           2019
         </p>
-
       </div>
 
     </div>
@@ -633,27 +633,23 @@
       <h3>Asım GÜRLÜK</h3>
       <p>BTK - Bölge Müdürü</p>
       <p>asim.gurluk@btk.gov.tr</p>
-      <p>+90 (549) 340 14 53</p>
     </div>
 
     <div class="reference">
       <h3>Lebibe YALÇINTAŞ</h3>
       <p>BTK İstanbul Bölge Müdürlüğü - Bölge Müdürü</p>
       <p>lebibe.yalcintas@gmail.com</p>
-      <p>+90 (532) 624 87 64</p>
     </div>
 
     <div class="reference">
       <h3>Ahmet SOBACI</h3>
       <p>BTK İstanbul Bölge Müdürlüğü - Teknik Uzman</p>
       <p>ahmet.sobaci@btk.gov.tr</p>
-      <p>+90 (533) 256 53 69</p>
     </div>
 
     <div class="reference">
       <h3>Vural KAÇAR</h3>
       <p>BTK İstanbul Bölge Müdürlüğü - Teknik Uzman</p>
-      <p>ahmet.sobaci@btk.gov.tr</p>
       <p>+90 (505) 212 36 38</p>
     </div>
 
@@ -661,7 +657,6 @@
       <h3>Kadir ÇİL</h3>
       <p>Kartek Metalürji - Satış ve Pazarlama Müdürü</p>
       <p>kcil@kartektube.com</p>
-      <p>+90 (532) 512 34 53</p>
     </div>
 
   </section>
@@ -730,8 +725,6 @@
 
   <script>
 
-    /* OPTIMIZED CURSOR */
-
     const cursor = document.querySelector(".cursor");
 
     let mouseX = 0;
@@ -777,6 +770,40 @@
     }
 
     animateCursor();
+
+    /* HOVER EFFECT */
+
+    const hoverItems = document.querySelectorAll(
+      "a, .btn, .card, .contact-card, .skill, .reference"
+    );
+
+    hoverItems.forEach(item=>{
+
+      item.addEventListener("mouseenter",()=>{
+
+        cursor.style.background = "#ff003c";
+
+        cursor.style.boxShadow =
+        "0 0 12px #ff003c, 0 0 24px #ff003c";
+
+        cursor.style.transform =
+        "translate(-50%,-50%) scale(1.4)";
+
+      });
+
+      item.addEventListener("mouseleave",()=>{
+
+        cursor.style.background = "#00ffff";
+
+        cursor.style.boxShadow =
+        "0 0 10px #00ffff, 0 0 20px #00ffff";
+
+        cursor.style.transform =
+        "translate(-50%,-50%) scale(1)";
+
+      });
+
+    });
 
     /* RIGHT CLICK BLOCK */
 
