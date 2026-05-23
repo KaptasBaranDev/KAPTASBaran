@@ -123,47 +123,77 @@
       text-align:center;
     }
 
+    /* PROFIL FOTOĞRAFI */
+
     .profile-wrapper{
+      position:relative;
       width:320px;
       height:320px;
       border-radius:50%;
-      padding:6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      animation:dropDown 1.8s ease forwards;
+      opacity:0;
+
+      margin-bottom:35px;
+    }
+
+    /* SADECE ÇERÇEVE RENK DEĞİŞTİRİYOR */
+
+    .profile-wrapper::before{
+      content:"";
+      position:absolute;
+      inset:-6px;
+      border-radius:50%;
 
       background:linear-gradient(
         45deg,
         #00ffff,
         #ff00ff,
+        #00ffff,
+        #7b2dff,
         #00ffff
       );
 
+      background-size:400% 400%;
+
+      animation:neonBorder 6s linear infinite;
+
+      z-index:0;
+
       box-shadow:
-      0 0 40px rgba(0,255,255,.8),
-      0 0 80px rgba(255,0,255,.4);
-
-      animation:
-      dropDown 1.8s ease forwards,
-      rotateGlow 6s linear infinite;
-
-      opacity:0;
-      margin-bottom:35px;
+      0 0 30px rgba(0,255,255,.8),
+      0 0 70px rgba(255,0,255,.5);
     }
 
     .profile-wrapper img{
+      position:relative;
+      z-index:2;
+
       width:100%;
       height:100%;
       object-fit:cover;
       border-radius:50%;
+
       display:block;
     }
 
-    @keyframes rotateGlow{
+    @keyframes neonBorder{
+
       0%{
-        filter:hue-rotate(0deg);
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
       }
 
       100%{
-        filter:hue-rotate(360deg);
+        background-position:0% 50%;
       }
+
     }
 
     @keyframes dropDown{
